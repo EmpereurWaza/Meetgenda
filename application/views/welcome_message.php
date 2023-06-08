@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title> Meetgenda </title>
     
-    <link href="<?= base_url('css/connection.css') ?>" rel="stylesheet"> 
+    <?=link_tag('css/connection.css')?>
 </head>
 <body>
     
