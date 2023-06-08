@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title> Meetgenda </title>
     
-    <?=link_tag('css/connection.css')?>
+    <?=link_tag('css/acceuil.css')?>
 </head>
 <body>
     
