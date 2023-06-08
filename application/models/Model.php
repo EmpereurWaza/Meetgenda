@@ -12,9 +12,9 @@ class Register_Model extends CI_Model {
 		$count = count($result);
 		return $count;
 	}
-	public function insert_user($data)
+	public function insert_user($nom,$prenom,$identifiant,$password,$email)
 	{
-		$this->db->insert('register', $data);
+		$this->db->insert('INSERT INTO User (Nom, Prenom, Identifiant, MotDePasse, Email) VALUES (?, ?, ?, ?, ?)';);
 	}
     public function run()
 	{
