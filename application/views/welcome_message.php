@@ -20,7 +20,7 @@
                 
             </ul>
             <div class="boutton"> 
-                <a href="<?= site_url('Connection') ?>">Log in </a>
+                <a href="<?= site_url('connection') ?>">Log in </a>
             </div> 
     </header>
     
