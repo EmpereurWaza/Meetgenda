@@ -19,6 +19,9 @@
                 <li><a class="menu__item" href="connection.php">Connection</a></li>
                 
             </ul>
+            <div class="boutton"> 
+                <a href="<?= site_url('connection') ?>">Log in </a>
+            </div> 
     </header>
     
     </body>
