@@ -12,9 +12,24 @@ class Register_Model extends CI_Model {
 		$count = count($result);
 		return $count;
 	}
-	public function insert_user($data)
+	public function insert_user()
 	{
-		$this->db->insert('register', $data);
+		$query = 'INSERT INTO User (Nom, Prenom, Identifiant, MotDePasse, Email) VALUES (?, ?, ?, ?, ?)';
+        $paramType = 'sss';
+        $paramValue = array(
+            $_POST["Nom"],
+            $_POST["Prenom"],
+            $_POST["Identifiant"],
+            $_POST["MotDePasse"],
+            $_POST["Email"],
+            );
+        $memberId = $this->ds->insert($query, $paramType, $paramValue);
+        if (! empty($memberId)) {
+            $response = array(
+                "status" => "success",
+                "message" => "You have registered successfully."
+            );
+        }
 	}
     public function run()
 	{
