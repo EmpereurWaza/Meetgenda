@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title> Meetgenda </title>
-    <link rel="stylesheet" href="acceuil.css" />
-    <link href="<?= base_url('css/connection')
+    
+    <link href="<?= base_url('css/connection.css') ?>" rel="stylesheet"> 
 </head>
 <body>
     
