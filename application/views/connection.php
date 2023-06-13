@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Page de connexion</title>
-  <link rel="stylesheet" type="text/css" href="connection.css">
+  <?=link_tag('css/connection.css')?> 
 </head>
 <body>
   <div class="container">
@@ -18,6 +18,7 @@
       </div>
       <input type="submit" value="Se connecter">
     </form>
+    <p>Vous n'avez pas encore de compte ? <a href="<?=site_url('inscription')?>">Inscrivez-vous</a></p>
   </div>
 </body>
 </html>

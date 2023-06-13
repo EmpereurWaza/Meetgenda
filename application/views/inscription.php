@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Page d'inscription</title>
-  <link rel="stylesheet" type="text/css" href="inscription.css">
+  <?=link_tag('css/inscription.css')?>
 </head>
 <body>
   <div class="container">
@@ -30,6 +30,7 @@
       </div>
       <input type="submit" value="S'inscrire">
     </form>
+    <p>Vous avez déjà un compte ? <a href="<?=site_url('connexion')?>">Connectez-vous</a></p>
   </div>
 </body>
 </html>

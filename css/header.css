@@ -1,0 +1,24 @@
+header {
+    background-color: #00b5fd;
+    position: absolute;
+}
+
+nav {
+    border-color: #00b5fd;
+    padding: 0;
+    font-family: 'Segoe UI';
+    text-align: center;
+}
+ 
+a:first-child{
+    text-align: center;
+}
+
+a {
+    margin-left: 5%;
+}
+ 
+h1 {
+    text-align: center;
+    size: 45px;
+}
