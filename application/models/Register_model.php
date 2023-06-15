@@ -36,10 +36,10 @@ class Register_model extends CI_Model {
     
     public function run()
     {
-        $identifiant = $_POST['Identifiant'];
+        $email = $_POST['Email'];
         $password = $_POST['MotDePasse'];
         
-        $res = $this->db->select("SELECT * FROM `User` WHERE Identifiant = '".$identifiant."'");
+        $res = $this->db->select("SELECT * FROM `User` WHERE Email = '".$email."'");
         $count = count($res);
         
         if ($count > 0 && password_verify($password, $res[0]['MotDePasse'])) { // Utilisation de password_verify()
@@ -48,7 +48,7 @@ class Register_model extends CI_Model {
             $_SESSION['loggedIn'] = true;
             $_SESSION['Identifiant'] = $identifiant;
             $_SESSION['MotDePasse'] = $res[0]['MotDePasse'];
-            header('location: '.URL.'connexion/index');
+            base_url();
         } else {
             $_SESSION['loggedIn'] = false;
             header('location: '.URL);
