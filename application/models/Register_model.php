@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Register_Model extends CI_Model {
+class Register_model extends CI_Model {
     public function __construct()
     {
         $this->load->database();

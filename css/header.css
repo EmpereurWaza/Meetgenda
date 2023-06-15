@@ -1,24 +1,27 @@
-header {
-    background-color: #00b5fd;
-    position: absolute;
-}
-
-nav {
-    border-color: #00b5fd;
+ul {
+    list-style-type: none;
+    margin: 0;
     padding: 0;
-    font-family: 'Segoe UI';
+    overflow: hidden;
+    background-color: #00b5fd;
+}
+  
+li {
+    float: left;
+ }
+  
+  li a {
+    display: block;
+    color: white;
     text-align: center;
-}
- 
-a:first-child{
-    text-align: center;
-}
-
-a {
-    margin-left: 5%;
-}
- 
-h1 {
-    text-align: center;
-    size: 45px;
-}
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+  }
