@@ -5,7 +5,7 @@ class Inscription extends CI_Controller
 {
 	public function index()
 	{
-		if ($this->session->userdata('id')) {
+		if ($this->session->userdata('Identifiant')) {
 			redirect('Accueil');
 			return;
 		}
@@ -15,23 +15,23 @@ class Inscription extends CI_Controller
 
 		$this->load->database();
 
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		$this->form_validation->set_rules('firstname', 'Firstname', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');
-		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
+		$this->form_validation->set_rules('Nom', 'Name', 'required');
+		$this->form_validation->set_rules('Prenom', 'Firstname', 'required');
+		$this->form_validation->set_rules('Email', 'Email', 'required|valid_email|is_unique[user.email]');
+		$this->form_validation->set_rules('MotDePasse', 'Password', 'required|min_length[4]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('inscription');
 			return;
 		}
 
-		$this->load->model('user');
+		$this->load->model('User');
 
 		$user = $this->user->create(
-			$this->input->post('name'),
-			$this->input->post('firstname'),
-			$this->input->post('email'),
-			$this->input->post('password')
+			$this->input->post('Nom'),
+			$this->input->post('Prenom'),
+			$this->input->post('Email'),
+			$this->input->post('MotDePasse')
 		);
 
 		if ($user) {
