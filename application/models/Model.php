@@ -4,7 +4,7 @@ class Register_Model extends CI_Model {
     public function __construct()
     {
         $this->load->database();
-        Session::init();
+        siuda::init();
     }
     public function check_user($identifiant,$email)
 	{
