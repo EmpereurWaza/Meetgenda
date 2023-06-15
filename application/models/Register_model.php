@@ -22,7 +22,7 @@ class Register_model extends CI_Model {
             $_POST["Nom"],
             $_POST["Prenom"],
             $_POST["Identifiant"],
-            $_POST["MotDePasse"],
+            password_hash($_POST["MotDePasse"], PASSWORD_DEFAULT), // Utilisation de password_hash()
             $_POST["Email"],
         );
         $memberId = $this->ds->insert($query, $paramType, $paramValue);
@@ -37,17 +37,17 @@ class Register_model extends CI_Model {
     public function run()
     {
         $identifiant = $_POST['Identifiant'];
-        $password = md5($_POST['MotDePasse']);
+        $password = $_POST['MotDePasse'];
         
-        $res = $this->db->select("SELECT * FROM `User` WHERE Identifiant = '".$identifiant."' AND MotDePasse = '".$password."'");
+        $res = $this->db->select("SELECT * FROM `User` WHERE Identifiant = '".$identifiant."'");
         $count = count($res);
         
-        if ($count > 0) {
+        if ($count > 0 && password_verify($password, $res[0]['MotDePasse'])) { // Utilisation de password_verify()
             session_start();
             $_SESSION['role'] = "user";
             $_SESSION['loggedIn'] = true;
             $_SESSION['Identifiant'] = $identifiant;
-            $_SESSION['MotDePasse'] = $res[0]['password'];
+            $_SESSION['MotDePasse'] = $res[0]['MotDePasse'];
             header('location: '.URL.'login/index');
         } else {
             $_SESSION['loggedIn'] = false;
