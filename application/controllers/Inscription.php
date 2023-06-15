@@ -11,7 +11,7 @@ class Inscription extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('register/index'); // Utiliser load->view() pour afficher la vue
+        $this->load->view('inscription'); // Utiliser load->view() pour afficher la vue
     }
 
     public function signup()
