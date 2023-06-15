@@ -48,7 +48,7 @@ class Register_model extends CI_Model {
             $_SESSION['loggedIn'] = true;
             $_SESSION['Identifiant'] = $identifiant;
             $_SESSION['MotDePasse'] = $res[0]['MotDePasse'];
-            header('location: '.URL.'login/index');
+            header('location: '.URL.'connexion/index');
         } else {
             $_SESSION['loggedIn'] = false;
             header('location: '.URL);
