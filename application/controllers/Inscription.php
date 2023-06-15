@@ -21,6 +21,8 @@ class Inscription extends CI_Controller {
     {
         $identifiant = $this->input->get('Identifiant');
         $email = $this->input->get('Email');
+		$nom = $this->input->get('Nom')
+		$prenom = $this->input->get('Prenom')
         $password = $this->input->get('MotDePasse');
         
         $count = $this->model->check_user($identifiant, $email);
