@@ -6,6 +6,7 @@ class Inscription extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$this->load->helper('html');
+		$this->load->model('register_model');
 		//$this->load->view('header');
 		$this->load->view('inscription');
 	}
