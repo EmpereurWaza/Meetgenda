@@ -1,46 +1,44 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Inscription extends CI_Controller {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->database();
-        $this->load->model('Register_model', 'model'); // Charger le modèle Register_model
-    }
+class Inscription extends CI_Controller
+{
+	public function index()
+	{
+		if ($this->session->userdata('id')) {
+			redirect('Accueil');
+			return;
+		}
+		
+		$this->load->helper(array('form'));
+		$this->load->library('form_validation');
 
-    public function index()
-    {
-		$this->load->helper('url');
-		$this->load->helper('html');
-		$this->load->view('header');
-        $this->load->view('inscription'); // Utiliser load->view() pour afficher la vue
-    }
+		$this->load->database();
 
-    public function signup()
-    {
-        $identifiant = $this->input->get('Identifiant');
-        $email = $this->input->get('Email');
-		$nom = $this->input->get('Nom')
-		$prenom = $this->input->get('Prenom')
-        $password = $this->input->get('MotDePasse');
-        
-        $count = $this->model->check_user($identifiant, $email);
-        
-        if ($count > 0) {
-            echo 'This User Already Exists';
-        } else {
-            $data = array(
-                'Nom' => null, // Remplacer 'Nom' par le nom de votre colonne correspondante dans la table 'User'
-                'Prenom' => null, // Remplacer 'Prenom' par le nom de votre colonne correspondante dans la table 'User'
-                'Identifiant' => $identifiant,
-                'MotDePasse' => password_hash($password, PASSWORD_DEFAULT),
-                'Email' => $email
-            );
-            
-            $this->model->insert_user($data);
-        }
-        
-        redirect('inscription'); // Utiliser redirect() pour rediriger vers la page d'inscription
-    }
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('firstname', 'Firstname', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('inscription');
+			return;
+		}
+
+		$this->load->model('user');
+
+		$user = $this->user->create(
+			$this->input->post('name'),
+			$this->input->post('firstname'),
+			$this->input->post('email'),
+			$this->input->post('password')
+		);
+
+		if ($user) {
+			$this->session->set_userdata($user);
+			redirect('Accueil');
+		} else {
+			echo "Error";
+		}
+	}
 }

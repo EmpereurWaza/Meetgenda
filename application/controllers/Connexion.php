@@ -1,33 +1,39 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Connexion extends CI_Controller {
+class Connexion extends CI_Controller
+{
+	public function index()
+	{
+		if ($this->session->userdata('id')) {
+			redirect('Accueil');
+			return;
+		}
+		
+		$this->load->helper(array('form'));
+		$this->load->library('form_validation');
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->database();
-        session_start();
-    }
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
 
-    public function index()
-    {
-		$this->load->helper('url');
-		$this->load->helper('html');
-		$this->load->view('header');
-        $this->load->view('connexion');
-    }
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('connexion');
+			return;
+		}
 
-    public function run()
-    {
-        $this->load->model('Register_model', 'model'); // Charger le modèle Register_model
-        $this->model->run();
-    }
+		$this->load->model('user');
 
-    public function logout()
-    {
-        session_destroy();
-        redirect('connexion'); // Utiliser redirect() pour rediriger vers la page de connexion
-        exit;
-    }
+		$user = $this->user->login(
+			$this->input->post('email'),
+			$this->input->post('password')
+		);
+
+		if ($user) {
+			$this->session->set_userdata($user);
+			redirect('Accueil');
+		} else {
+			echo "Error";
+		}
+
+	}
 }
