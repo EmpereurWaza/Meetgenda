@@ -27,7 +27,7 @@ class Connexion extends CI_Controller {
     public function logout()
     {
         session_destroy();
-        redirect('connexion/index'); // Utiliser redirect() pour rediriger vers la page de connexion
+        redirect('connexion'); // Utiliser redirect() pour rediriger vers la page de connexion
         exit;
     }
 }

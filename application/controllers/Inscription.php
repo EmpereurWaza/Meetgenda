@@ -39,6 +39,6 @@ class Inscription extends CI_Controller {
             $this->model->insert_user($data);
         }
         
-        redirect('inscription/index'); // Utiliser redirect() pour rediriger vers la page d'inscription
+        redirect('inscription'); // Utiliser redirect() pour rediriger vers la page d'inscription
     }
 }
