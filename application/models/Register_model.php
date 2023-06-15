@@ -19,11 +19,11 @@ class Register_model extends CI_Model {
         $query = 'INSERT INTO User (Nom, Prenom, Identifiant, MotDePasse, Email) VALUES (?, ?, ?, ?, ?)';
         $paramType = 'sss';
         $paramValue = array(
-            $_POST["Nom"],
-            $_POST["Prenom"],
-            $_POST["Identifiant"],
-            password_hash($_POST["MotDePasse"], PASSWORD_DEFAULT), // Utilisation de password_hash()
-            $_POST["Email"],
+            $_GET["Nom"],
+            $_GET["Prenom"],
+            $_GET["Identifiant"],
+            password_hash($_GET["MotDePasse"], PASSWORD_DEFAULT), // Utilisation de password_hash()
+            $_GET["Email"],
         );
         $memberId = $this->ds->insert($query, $paramType, $paramValue);
         if (!empty($memberId)) {
@@ -36,8 +36,8 @@ class Register_model extends CI_Model {
     
     public function run()
     {
-        $email = $_POST['Email'];
-        $password = $_POST['MotDePasse'];
+        $email = $_GET['Email'];
+        $password = $_GET['MotDePasse'];
         
         $res = $this->db->select("SELECT * FROM `User` WHERE Email = '".$email."'");
         $count = count($res);

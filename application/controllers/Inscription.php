@@ -19,9 +19,9 @@ class Inscription extends CI_Controller {
 
     public function signup()
     {
-        $identifiant = $this->input->post('Identifiant');
-        $email = $this->input->post('Email');
-        $password = $this->input->post('MotDePasse');
+        $identifiant = $this->input->get('Identifiant');
+        $email = $this->input->get('Email');
+        $password = $this->input->get('MotDePasse');
         
         $count = $this->model->check_user($identifiant, $email);
         
