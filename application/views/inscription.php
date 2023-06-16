@@ -7,7 +7,7 @@
 <body>
   <div class="container">
     <h2>Inscription</h2>
-    <form method="post" action="<?=site_url('inscription/submit')?>">
+    <form>
       <div class="form-group">
         <label for="username">Nom d'utilisateur :</label>
         <input type="text" id="username" name="username" required>
