@@ -9,8 +9,8 @@
     <h2>Inscription</h2>
     <form>
       <div class="form-group">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="username" required>
+        <label for="id">Nom d'utilisateur :</label>
+        <input type="text" id="id" name="id" required>
       </div>
       <div class="form-group">
         <label for="email">Adresse e-mail :</label>
