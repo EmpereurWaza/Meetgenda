@@ -9,11 +9,12 @@ class User extends CI_Model
         $this->load->database();
     }
 
-    public function create($name, $firstname, $email, $password)
+    public function create($id, $name, $firstname, $email, $password)
     {
         $result = $this->db->insert(
             'user',
             array(
+                'id' => $id,
                 'name' => $name,
                 'firstname' => $firstname,
                 'email' => strtolower($email),
