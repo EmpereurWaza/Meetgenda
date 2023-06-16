@@ -7,7 +7,7 @@
 <body>
   <div class="container">
     <h2>Connexion</h2>
-    <form>
+    <form method="post" action="<?=site_url('connexion/submit')?>">
       <div class="form-group">
         <label for="email">Adresse e-mail :</label>
         <input type="email" id="email" name="email" required>
