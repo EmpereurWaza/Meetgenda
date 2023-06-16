@@ -9,24 +9,25 @@ class User extends CI_Model
         $this->load->database();
     }
 
-    public function create($name, $firstname, $email, $password)
+    public function create($id, $name, $firstname, $email, $password)
     {
         $result = $this->db->insert(
-            'user',
+            'User',
             array(
-                'name' => $name,
-                'firstname' => $firstname,
-                'email' => strtolower($email),
-                'password' => password_hash($password, PASSWORD_DEFAULT)
+                'Identifiant' => $id,
+                'Nom' => $name,
+                'Prenom' => $firstname,
+                'Email' => strtolower($email),
+                'MotDePasse' => password_hash($password, PASSWORD_DEFAULT)
             )
         );
 
         if ($result) {
             return array(
-                'id' => $this->db->insert_id(),
-                'name' => $name,
-                'firstname' => $firstname,
-                'email' => $email
+                'Identifiant' => $this->db->insert_id(),
+                'Nom' => $name,
+                'Prenom' => $firstname,
+                'Email' => $email
             );
         } else {
             return false;
@@ -36,9 +37,9 @@ class User extends CI_Model
     public function login($email, $password)
     {
         $query = $this->db->get_where(
-            'user',
+            'User',
             array(
-                'email' => $email
+                'Email' => $email
             )
         );
 
@@ -51,10 +52,10 @@ class User extends CI_Model
             return false;
 
         return array(
-            'id' => $data->id,
-            'name' => $data->name,
-            'firstname' => $data->firstname,
-            'email' => $data->email
+            'Identifiant' => $data->id,
+            'Nom' => $data->name,
+            'Prenom' => $data->firstname,
+            'Email' => $data->email
         );
     }
 }

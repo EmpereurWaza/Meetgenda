@@ -2,12 +2,12 @@
 <html>
 <head>
   <title>Page de connexion</title>
-  <?=link_tag('css/connection.css')?> 
+  <?=link_tag('css/connexion.css')?> 
 </head>
 <body>
   <div class="container">
     <h2>Connexion</h2>
-    <form>
+    <form method="post">
       <div class="form-group">
         <label for="email">Adresse e-mail :</label>
         <input type="email" id="email" name="email" required>
