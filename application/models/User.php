@@ -44,18 +44,21 @@ class User extends CI_Model
         );
 
         if ($query->num_rows() == 0)
-            return false;
+            return array();
+        else {
+            $data = $query->row();
 
-        $data = $query->row();
-
-        if (!password_verify($password, $data->password))
-            return false;
-
-        return array(
-            'Identifiant' => $data->id,
-            'Nom' => $data->name,
-            'Prenom' => $data->firstname,
-            'Email' => $data->email
-        );
+            if (password_verify($password, $data->MotDePasse)){
+                return array(
+                    'Identifiant' => $data->Identifiant,
+                    'Nom' => $data->Nom,
+                    'Prenom' => $data->Prenom,
+                    'Email' => $data->Email
+                );
+            }
+            else {
+                return array();
+            }
+        }
     }
 }
