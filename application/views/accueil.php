@@ -16,10 +16,10 @@
         <p class="Titre2">
             Commencez dès maintenant ! 
        </p>
-        <img src="commencez.png"> 
+       <a href="<?= site_url('connexion')?>"><img src="<?= base_url() ?>img/commencez.png"></a>
     </div>
         
-        <div class="<?= base_url() ?>img/commencez.png"> 
+        <div class="text1"> 
             Avec Meetgenda, vous pouvez créer <br> des évènements en proposant plusieurs disponibilités <br> pour laisser à chacun des participants 
             se mettre <br> d'accord sur une ou plusieurs dates.  
             
