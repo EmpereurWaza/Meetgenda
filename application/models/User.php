@@ -11,6 +11,11 @@ class User extends CI_Model
 
     public function create($id, $name, $firstname, $email, $password)
     {
+        $sql = "SELECT * FROM User WHERE Identifiant = ? OR Email = ?";
+        $existing_acc = $this->db->query($sql, array($id, $email));
+        if ($existing_acc){
+            return array();
+        }
         $result = $this->db->insert(
             'User',
             array(
@@ -22,16 +27,12 @@ class User extends CI_Model
             )
         );
 
-        if ($result) {
-            return array(
-                'Identifiant' => $this->db->insert_id(),
-                'Nom' => $name,
-                'Prenom' => $firstname,
-                'Email' => $email
-            );
-        } else {
-            return false;
-        }
+        return array(
+            'Identifiant' => $this->db->insert_id(),
+             'Nom' => $name,
+             'Prenom' => $firstname,
+             'Email' => $email
+        );
     }
 
     public function login($email, $password)

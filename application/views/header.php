@@ -4,7 +4,7 @@
 </head>
 <body>
     <ul>
-        <li><h1><a href="<?= base_url()?>">Meetgenda</a></h1></li>
+        <li><a href="<?= base_url()?>"><img class="logo" src="<?= base_url() ?>logo/meetgenda.jpg"></a></li>
         <li><a href="#">Présentation</a></li>
         <li><a href="#">Projet</a></li>
         <li><a href="#">Documents</a></li>

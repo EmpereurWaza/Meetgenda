@@ -13,6 +13,11 @@ class Inscription extends CI_Controller {
 		$email = $this->input->post('email');
 		$pw = $this->input->post('password');
 		$new_account = $this->user->create($id, $ln, $fn, $email, $pw);
-		redirect('connexion');
+		if ($new_account !== array()){
+			redirect('connexion');
+		}
+		else {
+			redirect('inscription');
+		}
 	}
 }
