@@ -13,7 +13,7 @@ class User extends CI_Model
     {
         $sql = "SELECT * FROM User WHERE Identifiant = ? OR Email = ?";
         $existing_acc = $this->db->query($sql, array($id, $email));
-        if ($existing_acc){
+        if ($existing_acc->num_rows() != 0){
             return array();
         }
         $result = $this->db->insert(

@@ -2,7 +2,6 @@
 class Connexion extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		$this->load->library('session');
 	}
 
 	public function index(){
@@ -26,5 +25,10 @@ class Connexion extends CI_Controller {
 			}
 		redirect('welcome');
 		}
-}
+	}
+
+	public function fin(){
+		$this->session->sess_destroy();
+		redirect('welcome');
+	}
 }
