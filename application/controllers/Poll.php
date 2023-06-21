@@ -23,6 +23,7 @@ class Poll extends CI_Controller {
 		$start = $this->input->post('start_date');
 		$end = $this->input->post('end_date');
 		$sd = $this->sondage->new($titre, $summary, $start, $end, $location);
+		redirect('poll');
 	}
 }
 

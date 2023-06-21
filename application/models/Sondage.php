@@ -11,6 +11,15 @@ class Sondage extends CI_Model
 
     public function new($title, $summary, $start_date, $end_date, $location) 
     {
+        if ($end_date < $start_date) {
+            $temp = $start_date;
+            $start_date = $end_date;
+            $end_date = $temp;
+        }
+
+        if ($start_date < date('Y-m-d')) {
+            $start_date = date('Y-m-d');
+        }
         $this->db->insert(
             'Sondage',
             array(
