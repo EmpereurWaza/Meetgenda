@@ -9,6 +9,7 @@
         <?php if ($this->session->userdata('Identifiant')) { ?>
             <li style="float:right"><a href="<?= site_url('connexion/fin')?>">Se déconnecter</a></li>
             <li><a href="<?= site_url('poll')?>">Sondages</a></li>
+            <li><a href="<?= site_url('poll/new')?>">Nouveau sondage</a></li>
             <?php  } else { ?>
             <li style="float:right"><a href="<?= site_url('connexion')?>">Se connecter</a></li>
         <?php } ?>     

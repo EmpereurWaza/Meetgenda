@@ -17,9 +17,6 @@ class Sondage extends CI_Model
             $end_date = $temp;
         }
 
-        if ($start_date < date('Y-m-d')) {
-            $start_date = date('Y-m-d');
-        }
         $this->db->insert(
             'Sondage',
             array(
@@ -32,5 +29,9 @@ class Sondage extends CI_Model
                 'Location' => $location
             )
         );
+    }
+    public function list(){
+        $this->db->where('idSondage =', $this->session->userdata('Identifiant'));
+        $this->db->where('DateMax >=', date('Y-m-d'));
     }
 }

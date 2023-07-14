@@ -5,14 +5,14 @@ class Poll extends CI_Controller {
 			redirect('connexion');
 		}
 		$this->load->view('header');
-		echo 'Le sondage arrive';
+		$this->load->view('list_poll');
+		$this->load->model('sondage');
 	}
 	public function new(){
 		if(! $this->session->userdata('Identifiant')){
 			redirect('welcome');
 		}
 		$this->load->view('header');
-		$this->load->model('sondage');
 		$this->load->view('new_poll');
 	}
 	public function submit(){
