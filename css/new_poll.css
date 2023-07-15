@@ -19,7 +19,7 @@
     margin-bottom: 5px;
   }
   
-  input[type="location"], input[type="title"] {
+  input[type="location"], input[type="title"], input[type="summary"] {
     width: 100%;
     padding: 10px;
     font-size: 16px;

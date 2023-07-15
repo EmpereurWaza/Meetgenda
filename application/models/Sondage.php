@@ -9,8 +9,7 @@ class Sondage extends CI_Model
         $this->load->database();
     }
 
-    public function new($title, $summary, $start_date, $end_date, $location) 
-    {
+    public function new($title, $summary, $start_date, $end_date, $location) {
         if ($end_date < $start_date) {
             $temp = $start_date;
             $start_date = $end_date;
@@ -30,8 +29,8 @@ class Sondage extends CI_Model
             )
         );
     }
+
     public function list(){
-        $this->db->where('idSondage =', $this->session->userdata('Identifiant'));
-        $this->db->where('DateMax >=', date('Y-m-d'));
+        return $this->db->where('idSondage', $this->session->userdata('Identifiant'))->where('DateMax >=', date('Y-m-d'));
     }
 }

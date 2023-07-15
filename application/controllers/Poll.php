@@ -4,13 +4,14 @@ class Poll extends CI_Controller {
 		if(! $this->session->userdata('Identifiant')){
 			redirect('connexion');
 		}
-		$this->load->view('header');
-		$this->load->view('list_poll');
 		$this->load->model('sondage');
+		$data['query'] = $this->sondage->list();
+		$this->load->view('header');
+		$this->load->view('list_poll', $data);
 	}
 	public function new(){
 		if(! $this->session->userdata('Identifiant')){
-			redirect('welcome');
+			redirect('connexion');
 		}
 		$this->load->view('header');
 		$this->load->view('new_poll');
@@ -25,5 +26,9 @@ class Poll extends CI_Controller {
 		$sd = $this->sondage->new($titre, $summary, $start, $end, $location);
 		redirect('poll');
 	}
+	public function view($id = NULL){
+		
+	}
+
 }
 

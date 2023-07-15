@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Nouveau sondage</title>
-  <?=link_tag('css/inscription.css')?>
+  <?=link_tag('css/new_poll.css')?>
 </head>
 <body>
   <h1>Nouveau sondage</h1>
